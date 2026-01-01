@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+@layer base {
+    :root {
+        --primary: rgba(149, 113, 78, 0.067);
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        font-size: 62.5%;
+    }
+
+    body {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 1.6rem;
+        line-height: 1.5;
+        text-rendering: optimizeSpeed;
+    }
+
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+
+/* Scrollbar – KHÔNG dùng nesting */
+html::-webkit-scrollbar {
+    width: 5px;
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: #919191;
+    border-radius: 4px;
+}
