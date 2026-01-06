@@ -44,3 +44,13 @@ html::-webkit-scrollbar-thumb {
     background-color: #919191;
     border-radius: 4px;
 }
+
+.banner-swiper .swiper-pagination-bullet {
+    background-color: white;
+    opacity: 0.4;
+}
+
+.banner-swiper .swiper-pagination-bullet-active {
+    background-color: white;
+    opacity: 1;
+}
