@@ -5,13 +5,24 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useRef } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default function BannerSlider() {
+    const nextRef = useRef(null);
+    const prevRef = useRef(null);
+
+    useEffect(() => {
+        AOS.init({ duration: 800, once: false });
+    }, []);
+
     return (
         <div className="relative pt-[15px] m-0 w-full h-fit overflow-hidden">
-            <button className="custom-prev absolute left-8 top-1/2 z-10">
+            <button ref={prevRef} className="custom-prev absolute left-8 top-1/2 z-10">
                 <FontAwesomeIcon icon={faAngleLeft} className="text-5xl text-white" />
             </button>
-            <button className="custom-next absolute right-8 top-1/2 z-10">
+            <button ref={nextRef} className="custom-next absolute right-8 top-1/2 z-10">
                 <FontAwesomeIcon icon={faAngleRight} className="text-5xl  text-white" />
             </button>
             <Swiper
@@ -24,10 +35,14 @@ export default function BannerSlider() {
                     delay: 3000,
                     disableOnInteraction: false,
                 }}
+                onBeforeInit={(swiper) => {
+                    swiper.params.navigation.prevEl = prevRef.current;
+                    swiper.params.navigation.nextEl = nextRef.current;
+                }}
                 pagination={{ clickable: true }}
                 navigation={{
-                    prevEl: '.custom-prev',
-                    nextEl: '.custom-next',
+                    prevEl: prevRef.current,
+                    nextEl: nextRef.current,
                 }}
                 className="w-full max-h-[600px] banner-swiper"
             >
